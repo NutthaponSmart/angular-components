@@ -53,6 +53,13 @@ export class UiGridIntl implements OnDestroy {
      *
      */
     public noFilterPlaceholder = 'All';
+
+    /**
+     * No active grouping
+     *
+     */
+    public noGroupPlaceholder = 'None';
+
     /**
      * Search placeholder.
      *

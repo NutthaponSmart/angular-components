@@ -181,6 +181,21 @@ export class UiGridColumnDirective<T> implements OnChanges, OnDestroy {
     public refetch = false;
 
     /**
+     * If the cloumn is groupable, enabling it will show a dropdown by which grid rows will be grouped, useful with enum columns
+     *
+     */
+    @Input()
+    public groupable = false;
+
+    /**
+     * Call back function which accepts the value of a property to return the desired message or property's value
+     * useful when entity's property is numeric or empty user wants it value to map to something else
+     *
+     */
+    @Input()
+    public groupMessageCb?: Function;
+
+    /**
      * The searchable dropdown directive reference.
      * @ignore
      */
