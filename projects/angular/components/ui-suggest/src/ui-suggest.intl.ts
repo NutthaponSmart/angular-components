@@ -33,6 +33,12 @@ export class UiSuggestIntl implements OnDestroy {
      */
     public customValueLiveLabel = 'Custom value';
 
+    /**
+     * Notify if changes have occurred that require that the labels be updated.
+     *
+     */
+    public changes = new Subject();
+
     protected _destroyed$ = new Subject<void>();
 
     /**
@@ -52,10 +58,18 @@ export class UiSuggestIntl implements OnDestroy {
     public customValueLabel = (text: string) => text;
 
     /**
+     * Value label generator function.
+     *
+     * @param text The text of the value.
+     */
+    public translateLabel = (text: string) => text;
+
+    /**
      * @ignore
      */
     ngOnDestroy() {
         this._destroyed$.next();
         this._destroyed$.complete();
+        this.changes.complete();
     }
 }

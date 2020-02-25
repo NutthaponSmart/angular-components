@@ -254,7 +254,7 @@ export class UiSuggestComponent extends UiSuggestMatFormFieldDirective
             !this.isOpen &&
             this._hasValue
         ) {
-            return this.value.map(v => v.text).join(', ');
+            return this.value.map(v => this.intl.translateLabel(v.text)).join(', ');
         }
 
         return null;
@@ -568,6 +568,10 @@ export class UiSuggestComponent extends UiSuggestMatFormFieldDirective
         );
 
         this.intl = this.intl || new UiSuggestIntl();
+        this.intl
+            .changes
+            .pipe(takeUntil(this._destroyed$))
+            .subscribe(() => cd.detectChanges());
         this.customValueLabelTranslator = this.customValueLabelTranslator || this.intl.customValueLabel;
     }
 
